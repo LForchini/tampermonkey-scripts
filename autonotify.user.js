@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube Remove Alert
-// @version      1.2
+// @version      1.3
 // @author       elforo
 // @description  Removes the youtube notification alert
 // @namespace    mailto:dev@lforchini.com
@@ -11,10 +11,17 @@
 (function () {
     "use strict";
 
-    let alert = document.querySelector("[aria-label]='Notifications'");
+    let clicked = false;
 
-    if (alert) {
-        alert.click();
-        alert.click();
-    }
+    new window.MutationObserver((_e) => {
+        let elem = document.querySelector(`[aria-label]="Notifications"`);
+        if (elem && !clicked) {
+            elem.click();
+            elem.click();
+            clicked = true;
+            setTimeout(() => {
+                clicked = false;
+            }, Math.random() * 1000 + 2000);
+        }
+    });
 })();
