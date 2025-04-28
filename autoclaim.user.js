@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Twitch Auto-claim Channel Points
-// @version      1.0
+// @version      1.0.1
 // @author       elforo
 // @description  Automatically claim channel points on twitch
 // @namespace    mailto:dev@lforchini.com
@@ -11,15 +11,15 @@
 (function () {
     "use strict";
 
-    let claiming = false;
+    let clicked = false;
 
-    let _ = new window.MutationObserver((e) => {
-        let bonus = document.querySelector(".claimable-bonus__icon");
-        if (bonus && !claiming) {
-            bonus.click();
-            claiming = true;
+    new window.MutationObserver((_e) => {
+        let elem = document.querySelector(".claimable-bonus__icon");
+        if (elem && !clicked) {
+            elem.click();
+            clicked = true;
             setTimeout(() => {
-                claiming = false;
+                clicked = false;
             }, Math.random() * 1000 + 2000);
         }
     });
