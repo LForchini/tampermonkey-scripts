@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         YouTube Remove Alert
-// @version      1.1
+// @version      1.2
 // @author       elforo
 // @description  Removes the youtube notification alert
 // @namespace    mailto:dev@lforchini.com
-// @match        *://*.youtube.com/*
+// @match        *://www.youtube.com/*
 // @grant        none
 // ==/UserScript==
 
